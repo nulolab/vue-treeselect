@@ -636,6 +636,14 @@ export default {
       type: [ Number, String ],
       default: 999,
     },
+
+    /**
+     * 传入一个 nodeId，初始化显示时定位到该 node 位置
+     */
+    viewNodeId: {
+      type: String,
+      default: '',
+    },
   },
 
   data() {
@@ -686,6 +694,9 @@ export default {
 
       // <searchQuery, remoteSearchEntry> map.
       remoteSearch: createMap(),
+
+      // 初始化显示时是否定位到指定 node 位置
+      shouldViewNode: false,
     }
   },
 
@@ -874,6 +885,12 @@ export default {
       const nodeIdsFromValue = this.extractCheckedNodeIdsFromValue()
       const hasChanged = quickDiff(nodeIdsFromValue, this.internalValue)
       if (hasChanged) this.fixSelectedNodeIds(nodeIdsFromValue)
+    },
+
+    viewNodeId(newVal) {
+      if (newVal) {
+        this.shouldViewNode = true
+      }
     },
   },
 
@@ -1454,6 +1471,51 @@ export default {
       if (!this.options && !this.async) this.loadRootOptions()
       this.toggleClickOutsideEvent(true)
       this.$emit('open', this.getInstanceId())
+
+      this.$nextTick(this.expandAndScrollToNode)
+    },
+
+    /**
+     * 初始化时展开并滚动到节点
+     */
+    expandAndScrollToNode() {
+      if (this.shouldViewNode) {
+        this.shouldViewNode = false
+
+        this.expandNodeParent(this.forest.normalizedOptions, this.viewNodeId)
+
+        const $menu = this.getMenu()
+        if ($menu) {
+          const $option = $menu.querySelector(`.vue-treeselect__option[data-id="${this.viewNodeId}"]`)
+          $option && scrollIntoView($menu, $option)
+        }
+      }
+    },
+    /**
+     * 展开指定节点的父级
+     * @param {Array} normalizedOptions
+     * @param {String} nodeId
+     * @param {Object} parentNode
+     * @return {Boolean} isFindNode
+     */
+    expandNodeParent(normalizedOptions, nodeId, parentNode = null) {
+      const branchNode = parentNode
+      if (branchNode) {
+        this.$set(branchNode, 'isExpanded', true)
+        !branchNode.isRootNode && this.expandNodeParent([], '', branchNode.parentNode)
+      } else {
+        for (let i = 0; i < normalizedOptions.length; i++) {
+          const normalized = normalizedOptions[i]
+          if (normalized.isBranch) {
+            const isFindNode = this.expandNodeParent(normalized.children, nodeId)
+            if (isFindNode) return true
+          } else if (normalized.id === nodeId) {
+            this.expandNodeParent([], '', normalized.parentNode)
+            return true
+          }
+        }
+        return false
+      }
     },
 
     toggleMenu() {
