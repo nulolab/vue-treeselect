@@ -4,7 +4,7 @@
       <tr>
         <th class="name">Name</th>
         <th>Props</th>
-        <th class="desc">Description</th>
+        <th class="desc">说明</th>
       </tr>
     </thead>
     <tbody>
@@ -25,19 +25,19 @@
       slots: [ {
         name: 'option-label',
         props: makePropList([ 'node', 'shouldShowCount', 'count', 'labelClassName', 'countClassName' ]),
-        description: `Slot for custom option label template. See ${link('#customize-option-label')} for detailed information.`,
+        description: `自定义选项标签模板的插槽。有关详细信息，请参阅 ${link('#customize-option-label')}`,
       }, {
         name: 'value-label',
         props: makePropList([ 'node' ]),
-        description: `Slot for custom value label template. See ${link('#customize-value-label')} for detailed information.`,
+        description: `自定义值标签模板的插槽。有关详细信息，请参阅 ${link('#customize-value-label')}`,
       }, {
         name: 'before-list',
         props: '-',
-        description: `Slot showed before the menu list.`,
+        description: `插槽显示在菜单列表之前`,
       }, {
         name: 'after-list',
         props: '-',
-        description: `Slot showed after the menu list.`,
+        description: `插槽显示在菜单列表之后`,
       } ],
     }),
   }

@@ -2,9 +2,9 @@
   <table class="striped">
     <thead>
       <tr>
-        <th class="name">Name</th>
-        <th>Attributes</th>
-        <th class="desc">Description</th>
+        <th class="name">事件名称</th>
+        <th>回调参数</th>
+        <th class="desc">说明</th>
       </tr>
     </thead>
     <tbody>
@@ -25,27 +25,27 @@
       events: [ {
         name: 'open',
         attributes: makeArgNameList([ 'instanceId' ]),
-        description: 'Emitted when the menu opens.',
+        description: 'menu 打开的回调',
       }, {
         name: 'close',
         attributes: makeArgNameList([ 'value', 'instanceId' ]),
-        description: 'Emitted when the menu closes.',
+        description: 'menu 关闭的回调',
       }, {
         name: 'input',
         attributes: makeArgNameList([ 'value', 'instanceId' ]),
-        description: 'Emitted after value changes.',
+        description: '更改 value 后触发',
       }, {
         name: 'select',
         attributes: makeArgNameList([ 'node', 'instanceId' ]),
-        description: 'Emitted after selecting an option.',
+        description: '选择 option 后触发',
       }, {
         name: 'deselect',
         attributes: makeArgNameList([ 'node', 'instanceId' ]),
-        description: 'Emitted after deselecting an option.',
+        description: '取消选择 option 后触发',
       }, {
         name: 'search-change',
         attributes: makeArgNameList([ 'searchQuery', 'instanceId' ]),
-        description: 'Emitted after the search query changes.',
+        description: '搜索框值更改后触发',
       } ],
     }),
   }

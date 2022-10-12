@@ -233,10 +233,15 @@
         defaultValue: NO_DEFAULT_VALUE,
         description: `Generates a hidden ${code('<input />')} tag with this field name for html forms.`,
       }, {
+        name: 'showNoChildrenText',
+        type: 'Boolean',
+        defaultValue: code('false'),
+        description: '是否显示当分支节点没有子选项时的提示文本',
+      }, {
         name: 'noChildrenText',
         type: 'String',
-        defaultValue: code('"No sub-options."'),
-        description: 'Text displayed when a branch node has no children.',
+        defaultValue: code('无子选项'),
+        description: '当分支节点没有子选项时显示的文本',
       }, {
         name: 'noOptionsText',
         type: 'String',
@@ -245,8 +250,8 @@
       }, {
         name: 'noResultsText',
         type: 'String',
-        defaultValue: code('"No results found..."'),
-        description: 'Text displayed when there are no matching search results.',
+        defaultValue: code('"无匹配数据"'),
+        description: '没有匹配的搜索结果时显示的文本',
       }, {
         name: 'normalizer',
         type: `Fn${makeArgNameList([ 'node', 'instanceId' ])} 🡒 ${code('node')}`,
@@ -346,12 +351,16 @@
         name: 'valueFormat',
         type: 'String',
         defaultValue: code('"id"'),
-        description: `Format of ${code('value')} prop. <br>Note that, when set to ${code('"object"')}, only ${code('id')} & ${code('label')} properties are required in each ${code('node')} object in ${code('value')}. <br>Acceptable values: ${code('"id"')} or ${code('"object"')}.`,
+        description: `
+          Format of ${code('value')} prop.
+          <br>请注意，当设置为 ${code('"object"')} 时，only ${code('id')} & ${code('label')} properties are required in each ${code('node')} object in ${code('value')}.
+          <br>可选值：${code('id')} / ${code('object')}
+        `,
       }, {
         name: 'zIndex',
         type: 'Number | String',
         defaultValue: code('999'),
-        description: `${(code('z-index'))} of the menu.`,
+        description: `menu 的 ${(code('z-index'))}`,
       } ],
     }),
   }

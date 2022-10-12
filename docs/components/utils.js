@@ -4,7 +4,7 @@ export const code = str => `<code>${encodeHTML(str)}</code>`
 
 export const strong = str => `<strong>${str}</strong>`
 
-export const link = (target, text = 'here') => `<a href="${target}">${text}</a>`
+export const link = (target, text = '这里') => `<a href="${target}">${text}</a>`
 
 export const makeNameList = names => {
   names = names.map(code)
