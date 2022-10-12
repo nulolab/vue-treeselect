@@ -3,7 +3,7 @@
     <treeselect
       :multiple="true"
       :options="options"
-      placeholder="Select your favourite(s)..."
+      placeholder="选择您最喜爱的..."
       v-model="value"
       />
     <treeselect-value :value="value" />
@@ -16,40 +16,44 @@
       value: [],
       options: [ {
         id: 'fruits',
-        label: 'Fruits',
+        label: '水果',
         children: [ {
           id: 'apple',
-          label: 'Apple 🍎',
+          label: '苹果 🍎',
           isNew: true,
         }, {
           id: 'grapes',
-          label: 'Grapes 🍇',
+          label: '葡萄 🍇',
         }, {
           id: 'pear',
-          label: 'Pear 🍐',
+          label: '梨子 🍐',
         }, {
           id: 'strawberry',
-          label: 'Strawberry 🍓',
+          label: '草莓 🍓',
         }, {
           id: 'watermelon',
-          label: 'Watermelon 🍉',
+          label: '西瓜 🍉',
         } ],
       }, {
         id: 'vegetables',
-        label: 'Vegetables',
+        label: '蔬菜',
         children: [ {
           id: 'corn',
-          label: 'Corn 🌽',
+          label: '玉米 🌽',
         }, {
           id: 'carrot',
-          label: 'Carrot 🥕',
+          label: '胡萝卜 🥕',
         }, {
           id: 'eggplant',
-          label: 'Eggplant 🍆',
+          label: '茄子 🍆',
         }, {
           id: 'tomato',
-          label: 'Tomato 🍅',
+          label: '番茄 🍅',
         } ],
+      }, {
+        id: 'noChildren',
+        label: '无子选项',
+        children: [],
       } ],
     }),
   }
