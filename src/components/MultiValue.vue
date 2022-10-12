@@ -19,6 +19,9 @@
           ))
       },
 
+      /**
+       * 限制多选标签时的显示文本渲染
+       */
       renderExceedLimitTip() {
         const { instance } = this
         const count = instance.internalValue.length - instance.limit

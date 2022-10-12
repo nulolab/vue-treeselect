@@ -334,8 +334,8 @@ export default {
     },
 
     /**
-     * Limit the display of selected options.
-     * The rest will be hidden within the limitText string.
+     * 限制所选选项的显示
+     * 其余的将被隐藏在 limitText 字符串中
      */
     limit: {
       type: Number,
@@ -349,7 +349,7 @@ export default {
     limitText: {
       type: Function,
       default: function limitTextDefault(count) { // eslint-disable-line func-name-matching
-        return `and ${count} more`
+        return `+ ${count} ...`
       },
     },
 
@@ -401,11 +401,19 @@ export default {
     },
 
     /**
-     * Text displayed when a branch node has no children.
+     * 是否显示当分支节点没有子选项时的提示文本
+     */
+    showNoChildrenText: {
+      type: Boolean,
+      default: false,
+    },
+
+    /**
+     * 当分支节点没有子选项时的提示文本
      */
     noChildrenText: {
       type: String,
-      default: 'No sub-options.',
+      default: '无子选项',
     },
 
     /**
@@ -421,7 +429,7 @@ export default {
      */
     noResultsText: {
       type: String,
-      default: 'No results found...',
+      default: '无匹配数据',
     },
 
     /**

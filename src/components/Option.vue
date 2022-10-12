@@ -56,6 +56,9 @@
         )
       },
 
+      /**
+       * 渲染子选项列表
+       */
       renderSubOptionsList() {
         if (!this.shouldExpand) return null
 
@@ -201,10 +204,13 @@
         ))
       },
 
+      /**
+       * 无子选项时的提示内容渲染
+       */
       renderNoChildrenTip() {
         const { instance, node } = this
 
-        if (!node.childrenStates.isLoaded || node.children.length) return null
+        if (!node.childrenStates.isLoaded || node.children.length || !instance.showNoChildrenText) return null
 
         return (
           <Tip type="no-children" icon="warning">{ instance.noChildrenText }</Tip>
