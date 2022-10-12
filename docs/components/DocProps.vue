@@ -245,8 +245,8 @@
       }, {
         name: 'noOptionsText',
         type: 'String',
-        defaultValue: code('"No options available."'),
-        description: 'Text displayed when there are no available options.',
+        defaultValue: code('"暂无数据"'),
+        description: '没有可用选项时显示的文本',
       }, {
         name: 'noResultsText',
         type: 'String',

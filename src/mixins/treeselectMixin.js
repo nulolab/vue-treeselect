@@ -421,7 +421,7 @@ export default {
      */
     noOptionsText: {
       type: String,
-      default: 'No options available.',
+      default: '暂无数据',
     },
 
     /**

@@ -1809,7 +1809,7 @@ describe('Props', () => {
 
       const menu = wrapper.find('.vue-treeselect__menu')
       const noOptionsTip = menu.find('.vue-treeselect__no-options-tip')
-      expect(noOptionsTip.text().trim()).toBe('No options available.')
+      expect(noOptionsTip.text().trim()).toBe('暂无数据')
     })
 
     describe('should be reactive', () => {
